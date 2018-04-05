@@ -1,8 +1,10 @@
 import serial
 import paho.mqtt.client as mqtt
-import xdot
+import string
+import sys
 
 import time
+import datetime
 import json
 import binascii
 import base64
@@ -13,18 +15,11 @@ import base64
 
 # global variables
 network = "pivot.iuiot.org"
-counter = 0
-dots = "xDot: Send="
-dotr = "xDot: Receive="
-pivu = "pivot: Up="
-pivd = "pivot: Down="
+
 
 pl1 = "{\"data\":\""
 pl2 = "\",\"deveui\":\"00-80-00-00-04-00-56-d1\"}"
 
-#xDot client data
-xd = xdot.xDot()
-xd.join_network("MTCDT-19400691", "MTCDT-19400691", "1")
 
 pivread = True
 
@@ -35,15 +30,14 @@ def on_message(client, userdata, msg):
     #     pl += binascii.b2a_qp(s)
     # dj = json.dumps(pl)
     # js = json.load(dj)
-    print pivu + base64.b64decode(json.loads(msg.payload)['data'])
-    # global pivread
-    # pivread = True
-    global counter
-    counter = int(base64.b64decode(json.loads(msg.payload)['data']))
-    counter+=1
-    snd = pl1 + base64.b64encode(str(counter)) + pl2
-    client.publish("lora/00-80-00-00-04-00-51-87/down", snd)
-    print pivd + str(counter)
+    info = base64.b64decode(json.loads(msg.payload)['data'])
+    p,t = info.split("&")
+    dump = open("./pandt.txt",mode='a+')
+    dump.write(datetime.now())
+    dump.write("pressure = " + str(p))
+    dump.write("temperature = " + str(t))
+    dump.close()
+
 
 
 pivot = mqtt.Client()
