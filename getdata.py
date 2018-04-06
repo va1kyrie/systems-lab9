@@ -44,28 +44,29 @@ pivot = mqtt.Client()
 pivot.on_message = on_message
 pivot.connect(network)
 pivot.subscribe("lora/00-80-00-00-04-00-51-87/up")
+pivot.loop_forever()
 
-def count():
-    global counter
-    counter = 0
-    pivot.loop_start()
-    while counter < 11:
-        print dots + str(counter)
-        xret = (xd.send_message(str(counter))).decode()
-        #counter+=1
-        if xret != "":
-            rec = int(xret)
-        else:
-            rec = -1
-        if rec > 0:
-            print dotr + str(rec)
-            global counter
-            counter = rec
-            counter+=1
-        # if pivread:
-            # pivot.publish("lora/00-80-00-00-04-00-51-87/down", str(counter))
-            # print pivd + str(counter)
-            # global pivread
-            #pivread = False
-    pivot.loop_stop()
-    print "finished"
+# def count():
+#     global counter
+#     counter = 0
+#     pivot.loop_start()
+#     while counter < 11:
+#         print dots + str(counter)
+#         xret = (xd.send_message(str(counter))).decode()
+#         #counter+=1
+#         if xret != "":
+#             rec = int(xret)
+#         else:
+#             rec = -1
+#         if rec > 0:
+#             print dotr + str(rec)
+#             global counter
+#             counter = rec
+#             counter+=1
+#         # if pivread:
+#             # pivot.publish("lora/00-80-00-00-04-00-51-87/down", str(counter))
+#             # print pivd + str(counter)
+#             # global pivread
+#             #pivread = False
+#     pivot.loop_stop()
+#     print "finished"
