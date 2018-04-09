@@ -46,6 +46,14 @@ pivot.connect(network)
 pivot.subscribe("lora/00-80-00-00-04-00-51-87/up")
 pivot.loop_forever()
 
+def test():
+    ser = serial.Serial('/dev/ttyACM0', 115200)
+    print(ser.name)
+    while(True):
+        time.sleep(2)
+        ser.write('s')
+    print('something is very wrong')
+
 # def count():
 #     global counter
 #     counter = 0
