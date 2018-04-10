@@ -18,7 +18,7 @@ network = "pivot.iuiot.org"
 
 
 pl1 = "{\"data\":\""
-pl2 = "\",\"deveui\":\"00-80-00-00-04-00-56-d1\"}"
+pl2 = "\",\"deveui\":\"00-80-00-00-04-00-51-87\"}"
 
 
 pivread = True
@@ -33,39 +33,39 @@ def on_message(client, userdata, msg):
     info = base64.b64decode(json.loads(msg.payload)['data'])
     p,t = info.split("&")
     dump = open("./pandt.txt",mode='a+')
-    dump.write(datetime.now())
-    dump.write("pressure = " + str(p))
-    dump.write("temperature = " + str(t))
+    tm = time.ctime()
+    dump.write('\n' + tm)
+    dump.write("\npressure = " + str(p))
+    dump.write("\ntemperature = " + str(t))
+    #print('temp  = ' + str(t))
+    #print('pressure = ' + str(p))
     dump.close()
 
 
-
+MTAyNiYwLjAw
 pivot = mqtt.Client()
 pivot.on_message = on_message
 pivot.connect(network)
 pivot.subscribe("lora/00-80-00-00-04-00-51-87/up")
+pivot.loop_forever()
 
-def count():
-    global counter
-    counter = 0
+def test():
+    ser = serial.Serial('/dev/ttyACM0', 115200)
+    print(ser.name)
     pivot.loop_start()
-    while counter < 11:
-        print dots + str(counter)
-        xret = (xd.send_message(str(counter))).decode()
-        #counter+=1
-        if xret != "":
-            rec = int(xret)
-        else:
-            rec = -1
-        if rec > 0:
-            print dotr + str(rec)
-            global counter
-            counter = rec
-            counter+=1
-        # if pivread:
-            # pivot.publish("lora/00-80-00-00-04-00-51-87/down", str(counter))
-            # print pivd + str(counter)
-            # global pivread
-            #pivread = False
+    while 1:
+        print('testing...')
+        time.sleep(2)
+        ser.write('s')
+    print('something is very wrong')
+
+def measure():
+    ser = serial.Serial('/dev/ttyACM0', 115200)
+    print(ser.name)
+    pivot.loop_start()
+    hrs = 0
+    while hrs < 49:
+        print('measuring data')
+        time.sleep(3600)
+    print('measuring finished')
     pivot.loop_stop()
-    print "finished"
