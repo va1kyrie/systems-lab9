@@ -42,7 +42,6 @@ def on_message(client, userdata, msg):
     dump.close()
 
 
-MTAyNiYwLjAw
 pivot = mqtt.Client()
 pivot.on_message = on_message
 pivot.connect(network)
