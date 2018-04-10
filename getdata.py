@@ -18,7 +18,7 @@ network = "pivot.iuiot.org"
 
 
 pl1 = "{\"data\":\""
-pl2 = "\",\"deveui\":\"00-80-00-00-04-00-56-d1\"}"
+pl2 = "\",\"deveui\":\"00-80-00-00-04-00-51-87\"}"
 
 
 pivread = True
@@ -33,13 +33,16 @@ def on_message(client, userdata, msg):
     info = base64.b64decode(json.loads(msg.payload)['data'])
     p,t = info.split("&")
     dump = open("./pandt.txt",mode='a+')
-    dump.write(datetime.now())
-    dump.write("pressure = " + str(p))
-    dump.write("temperature = " + str(t))
+    tm = time.ctime()
+    dump.write('\n' + tm)
+    dump.write("\npressure = " + str(p))
+    dump.write("\ntemperature = " + str(t))
+    #print('temp  = ' + str(t))
+    #print('pressure = ' + str(p))
     dump.close()
 
 
-
+MTAyNiYwLjAw
 pivot = mqtt.Client()
 pivot.on_message = on_message
 pivot.connect(network)
@@ -49,10 +52,23 @@ pivot.loop_forever()
 def test():
     ser = serial.Serial('/dev/ttyACM0', 115200)
     print(ser.name)
-    while(True):
+    pivot.loop_start()
+    while 1:
+        print('testing...')
         time.sleep(2)
         ser.write('s')
     print('something is very wrong')
+
+def measure():
+    ser = serial.Serial('/dev/ttyACM0', 115200)
+    print(ser.name)
+    pivot.loop_start()
+    hrs = 0
+    while hrs < 49:
+        print('measuring data')
+        time.sleep(3600)
+    print('measuring finished')
+    pivot.loop_stop()
 
 # def count():
 #     global counter
