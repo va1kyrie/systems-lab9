@@ -46,7 +46,7 @@ pivot = mqtt.Client()
 pivot.on_message = on_message
 pivot.connect(network)
 pivot.subscribe("lora/00-80-00-00-04-00-51-87/up")
-pivot.loop_forever()
+#pivot.loop_forever()
 
 def test():
     ser = serial.Serial('/dev/ttyACM0', 115200)
@@ -59,8 +59,8 @@ def test():
     print('something is very wrong')
 
 def measure():
-    ser = serial.Serial('/dev/ttyACM0', 115200)
-    print(ser.name)
+    #ser = serial.Serial('/dev/ttyACM0', 115200)
+    #print(ser.name)
     pivot.loop_start()
     hrs = 0
     while hrs < 49:
