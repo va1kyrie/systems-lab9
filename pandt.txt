@@ -1,0 +1,76 @@
+
+Mon Apr  9 21:28:48 2018
+pressure = 992
+temperature = 20.00
+Mon Apr  9 21:29:52 2018
+pressure = 991
+temperature = 19.81
+Mon Apr  9 22:05:39 2018
+pressure = 992
+temperature = 20.50
+Mon Apr  9 22:41:26 2018
+pressure = 992
+temperature = 20.31
+Mon Apr  9 23:17:14 2018
+pressure = 992
+temperature = 20.12
+Mon Apr  9 23:53:01 2018
+pressure = 992
+temperature = 20.00
+Tue Apr 10 00:28:49 2018
+pressure = 992
+temperature = 19.81
+Tue Apr 10 01:04:36 2018
+pressure = 992
+temperature = 19.94
+Tue Apr 10 01:40:24 2018
+pressure = 992
+temperature = 19.75
+Tue Apr 10 02:16:11 2018
+pressure = 992
+temperature = 19.62
+Tue Apr 10 02:51:59 2018
+pressure = 993
+temperature = 19.69
+Tue Apr 10 03:27:46 2018
+pressure = 992
+temperature = 19.44
+Tue Apr 10 04:03:34 2018
+pressure = 992
+temperature = 19.50
+Tue Apr 10 04:39:21 2018
+pressure = 992
+temperature = 19.44
+Tue Apr 10 05:15:09 2018
+pressure = 993
+temperature = 19.44
+Tue Apr 10 05:50:56 2018
+pressure = 993
+temperature = 19.44
+Tue Apr 10 06:26:43 2018
+pressure = 993
+temperature = 19.38
+Tue Apr 10 07:02:31 2018
+pressure = 993
+temperature = 19.31
+Tue Apr 10 07:38:18 2018
+pressure = 994
+temperature = 19.44
+Tue Apr 10 08:14:06 2018
+pressure = 994
+temperature = 19.69
+Tue Apr 10 08:49:53 2018
+pressure = 995
+temperature = 20.00
+Tue Apr 10 09:25:41 2018
+pressure = 995
+temperature = 20.19
+Tue Apr 10 10:01:28 2018
+pressure = 995
+temperature = 20.50
+Tue Apr 10 10:37:16 2018
+pressure = 995
+temperature = 20.62
+Tue Apr 10 11:13:03 2018
+pressure = 995
+temperature = 20.69
